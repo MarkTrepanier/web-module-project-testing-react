@@ -14,6 +14,13 @@ const testEpisode = {
 
 const testEpisodeWithoutImage = {
     //Add in approprate test data structure here.
+    id:1,
+    name: "",
+    image: null,
+    season: 1,
+    number: 1,
+    summary: "David Harbour was fantastic as Hellboy",
+    runtime: 1
 }
 
 test("renders without error", () => {
@@ -29,7 +36,12 @@ test("renders the summury test passed as prop", ()=>{
 });
 
 test("renders default image when image is not defined", ()=>{
-    
+    render(<Episode episode={testEpisodeWithoutImage}/>);
+    const image = screen.getByTestId('image');
+    expect(image.alt).toBeTruthy();
+    console.log(image.alt)
+    expect(image.alt).toContain('./stranger_things.png');
+
 })
 
 //Tasks

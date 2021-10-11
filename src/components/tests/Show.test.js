@@ -6,9 +6,17 @@ import Show from './../Show';
 
 const testShow = {
     //add in approprate test data structure here.
+
+    name: 'Letterkenny',
+    summary:"Quick-witted, fast-paced snappy comedy about rural folk getting by in a small town.",
+    seasons: [
+    {name:'season 1', id:'01', episodes: []},{name:'season 2', id:'02', episodes: []},{name:'season 3', id:'03', episodes: []},
+    {name:'season 4', id:'04', episodes: []},{name:'season 5', id:'05', episodes: []},{name:'season 6', id:'06', episodes: []},
+    {name:'season 7', id:'07', episodes: []},{name:'season 8', id:'08', episodes: []},{name:'season 9', id:'09', episodes: []}]
 }
 
 test('renders testShow and no selected Season without errors', ()=>{
+    render(<Show show={testShow} selectedSeason={'none'}/>);
 });
 
 test('renders Loading component when prop show is null', () => {

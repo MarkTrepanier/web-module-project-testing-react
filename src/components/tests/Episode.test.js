@@ -8,7 +8,7 @@ const testEpisode = {
     image: "http://static.tvmaze.com/uploads/images/medium_landscape/67/168918.jpg",
     season: 1,
     number: 1,
-    summary: "",
+    summary: "David Harbour was fantastic as Hellboy",
     runtime: 1
 }
 
@@ -21,7 +21,11 @@ test("renders without error", () => {
 });
 
 test("renders the summury test passed as prop", ()=>{
-    
+    render(<Episode episode={testEpisode}/>);
+    const summary = screen.queryByTestId('summary');
+    expect(summary).toBeTruthy();
+    expect(summary).not.toBeNull();
+    expect(summary).toHaveTextContent('David Harbour was fantastic as Hellboy');
 });
 
 test("renders default image when image is not defined", ()=>{

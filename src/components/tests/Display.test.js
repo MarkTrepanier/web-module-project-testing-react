@@ -2,9 +2,21 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Display from "../Display";
+jest.mock('../Show',()=>()=>{
+    <>the data</>
+})
 
 test('Renders',()=>{
     render(<Display/>);
+})
+
+test('when fetch is pressed, "Show" will display',()=>{
+    render(<Display/>);
+    const fetchBtn = screen.getByRole('button');
+    const show = screen.queryByText(/the data/i)
+    expect(show).not.toBeVisible();
+    //userEvent.click(fetchBtn);
+    expect(show).toBeVisible();
 })
 
 

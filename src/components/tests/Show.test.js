@@ -1,8 +1,7 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Show from './../Show';
-import {Loader as MockLoader} from '../Loading'
 jest.mock('../Loading', ()=>()=>(<>loader</>))
 
   
@@ -40,8 +39,15 @@ test('renders same number of options seasons are passed in', ()=>{
     
 });
 
-test('handleSelect is called when an season is selected', () => {
-
+test('handleSelect is called when a season is selected', () => {
+    // const mockSelect = jest.fn();
+    
+    // render(<Show show={testShow} handleSelect={mockSelect} selectedSeason={'none'}/>);
+    // const selector = screen.getByRole('combobox');
+    // userEvent.click(selector);
+    // const options = document.querySelectorAll('option')
+    
+    // expect(mockSelect).toHaveBeenCalled();
 
 });
 

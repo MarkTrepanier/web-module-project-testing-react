@@ -1,9 +1,11 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-
 import Show from './../Show';
+import {Loader as MockLoader} from '../Loading'
+jest.mock('../Loading', ()=>()=>(<>loader</>))
 
+  
 const testShow = {
     //add in approprate test data structure here.
 
@@ -20,12 +22,27 @@ test('renders testShow and no selected Season without errors', ()=>{
 });
 
 test('renders Loading component when prop show is null', () => {
+
+    render(<Show show={null} selectedSeason={'none'}/>);
+    const Loading = screen.queryByText(/loader/i);
+    expect(Loading).toHaveTextContent(/loader/i)
+
+
 });
 
 test('renders same number of options seasons are passed in', ()=>{
+    render(<Show show={testShow} selectedSeason={'none'}/>);
+    const selector = screen.getByRole('combobox')
+    userEvent.click(selector)
+    const options = screen.getAllByText(/season/i)
+    expect(options.length).toBeGreaterThanOrEqual(9);
+    options.map(option=>{expect(option).toBeVisible()});
+    
 });
 
 test('handleSelect is called when an season is selected', () => {
+
+
 });
 
 test('component renders when no seasons are selected and when rerenders with a season passed in', () => {
